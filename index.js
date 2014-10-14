@@ -1,7 +1,8 @@
 'use strict';
 
-var url       = require ('url');
-
+var url           = require ('url');
+var xcraftConfig  = require ('xcraft-core-etc').load ('xcraft');
+var chestConfig   = require ('xcraft-core-etc').load ('xcraft-contrib-chest');
 /**
  * Retrieve the real URI behind the URI extensions for zog.
  * There are two extensions:
@@ -11,10 +12,9 @@ var url       = require ('url');
  *   return an URI with file:
  * @param {string} uri - Input URI.
  * @param {string} packageName
- * @param {Object} zogConfig
  * @returns The real URI.
  */
-exports.realUri = function (uri, packageName, zogConfig) {
+exports.realUri = function (uri, packageName) {
   var path = require ('path');
 
   var uriObj = url.parse (uri);
@@ -23,15 +23,15 @@ exports.realUri = function (uri, packageName, zogConfig) {
   {
   case 'chest:': {
     var protocol = 'http:';
-    if (parseInt (uriObj.slashes ? uriObj.port : zogConfig.chest.port) === 443) {
+    if (parseInt (uriObj.slashes ? uriObj.port : chestConfig.port) === 443) {
       protocol = 'https:';
     }
 
     var urlHttp = {};
     urlHttp.protocol = protocol;
     urlHttp.slashes  = true;
-    urlHttp.hostname = uriObj.slashes ? uriObj.hostname : zogConfig.chest.host;
-    urlHttp.port     = uriObj.slashes ? uriObj.port     : zogConfig.chest.port;
+    urlHttp.hostname = uriObj.slashes ? uriObj.hostname : chestConfig.host;
+    urlHttp.port     = uriObj.slashes ? uriObj.port     : chestConfig.port;
     urlHttp.pathname = path.join ('/resources/', uriObj.pathname || uriObj.hostname).replace (/\\/g, '/');
     return url.format (urlHttp);
   }
@@ -42,7 +42,7 @@ exports.realUri = function (uri, packageName, zogConfig) {
     urlFile.slashes  = true;
     urlFile.hostname = uriObj.hostname;
     urlFile.port     = uriObj.port;
-    urlFile.pathname = path.join (zogConfig.pkgProductsRoot, packageName, uriObj.pathname).replace (/\\/g, '/');
+    urlFile.pathname = path.join (xcraftConfig.pkgProductsRoot, packageName, uriObj.pathname).replace (/\\/g, '/');
     return url.format (urlFile);
   }
   }

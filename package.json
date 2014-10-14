@@ -17,6 +17,8 @@
   },
   "author": "Mathieu Schroeter",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "xcraft-core-etc": "0.1.0"
+  },
   "devDependencies": {}
 }
