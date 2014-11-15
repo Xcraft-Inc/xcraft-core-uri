@@ -16,7 +16,7 @@
     "url" : "lib/xcraft-core-uri"
   },
   "author": "Mathieu Schroeter",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "xcraft-core-etc": "0.1.0"
   },
