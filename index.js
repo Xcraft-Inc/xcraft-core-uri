@@ -10,6 +10,7 @@ var chestConfig   = require ('xcraft-core-etc').load ('xcraft-contrib-chest');
  *   returns an URI with http[s]:
  * - self://[host]/path
  *   return an URI with file:
+ *
  * @param {string} uri - Input URI.
  * @param {string} packageName
  * @returns The real URI.
