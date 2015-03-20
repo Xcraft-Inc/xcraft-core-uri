@@ -8,7 +8,12 @@ var chestConfig   = require ('xcraft-core-etc').load ('xcraft-contrib-chest');
  * There are two extensions:
  * - chest:[//<host>[:<port>]/]<resource>
  *   returns an URI with http[s]:
- * - self://[host]/path
+ *
+ * - self:///path
+ *   self contained (inner package) path
+ * - home:///path
+ *   relative to the xcraft home folder path
+ *
  *   return an URI with file:
  *
  * @param {string} uri - Input URI.
@@ -44,6 +49,16 @@ exports.realUri = function (uri, packageName) {
     urlFile.hostname = uriObj.hostname;
     urlFile.port     = uriObj.port;
     urlFile.pathname = path.join (xcraftConfig.pkgProductsRoot, packageName, uriObj.pathname).replace (/\\/g, '/');
+    return url.format (urlFile);
+  }
+
+  case 'home:': {
+    var urlFile = {};
+    urlFile.protocol = 'file:';
+    urlFile.slashes  = true;
+    urlFile.hostname = uriObj.hostname;
+    urlFile.port     = uriObj.port;
+    urlFile.pathname = path.join (xcraftConfig.xcraftRoot, '/home/', uriObj.pathname).replace (/\\/g, '/');
     return url.format (urlFile);
   }
   }
