@@ -24,6 +24,7 @@ var chestConfig  = require ('xcraft-core-etc').load ('xcraft-contrib-chest');
 exports.realUri = function (uri, packageName) {
   var path = require ('path');
 
+  var urlFile = {};
   var uriObj = url.parse (uri);
 
   switch (uriObj.protocol)
@@ -44,7 +45,6 @@ exports.realUri = function (uri, packageName) {
   }
 
   case 'self:': {
-    var urlFile = {};
     urlFile.protocol = 'file:';
     urlFile.slashes  = true;
     urlFile.hostname = uriObj.hostname;
@@ -54,7 +54,6 @@ exports.realUri = function (uri, packageName) {
   }
 
   case 'home:': {
-    var urlFile = {};
     urlFile.protocol = 'file:';
     urlFile.slashes  = true;
     urlFile.hostname = uriObj.hostname;
