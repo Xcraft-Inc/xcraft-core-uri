@@ -8,18 +8,17 @@ var chestConfig  = require ('xcraft-core-etc').load ('xcraft-contrib-chest');
  * Retrieve the real URI behind the URI extensions for zog.
  * There are two extensions:
  * - chest:[//<host>[:<port>]/]<resource>
- *   returns an URI with http[s]:
+ *   it returns an URI with http or https.
  *
  * - self:///path
  *   self contained (inner package) path
  * - home:///path
- *   relative to the xcraft home folder path
- *
- *   return an URI with file:
+ *   relative to the xcraft home folder path,
+ *   it returns an URI with file.
  *
  * @param {string} uri - Input URI.
  * @param {string} packageName
- * @returns The real URI.
+ * @returns {string} The real URI.
  */
 exports.realUri = function (uri, packageName) {
   var path = require ('path');
