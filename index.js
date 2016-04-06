@@ -26,8 +26,7 @@ exports.realUri = function (uri, packageName) {
   var urlFile = {};
   var uriObj = url.parse (uri);
 
-  switch (uriObj.protocol)
-  {
+  switch (uriObj.protocol) {
   case 'chest:': {
     var protocol = 'http:';
     if (parseInt (uriObj.slashes ? uriObj.port : chestConfig.port) === 443) {
