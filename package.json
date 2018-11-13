@@ -9,11 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "xcraft",
-    "uri",
-    "helpers"
-  ],
+  "keywords": ["xcraft", "uri", "helpers"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Xcraft-Inc/xcraft-core-uri.git"
@@ -28,6 +24,6 @@
   },
   "homepage": "https://github.com/Xcraft-Inc/xcraft-core-uri#readme",
   "devDependencies": {
-    "xcraft-dev-rules": "^0.2.0"
+    "xcraft-dev-rules": "^0.3.0"
   }
 }
