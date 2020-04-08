@@ -20,7 +20,7 @@ var chestConfig = require('xcraft-core-etc')().load('xcraft-contrib-chest');
  * @param {string} packageName
  * @returns {string} The real URI.
  */
-exports.realUri = function(uri, packageName) {
+exports.realUri = function (uri, packageName) {
   var path = require('path');
 
   var urlFile = {};
