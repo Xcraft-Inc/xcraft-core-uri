@@ -1,6 +1,6 @@
 {
   "name": "xcraft-core-uri",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Xcraft uri converter",
   "main": "index.js",
   "engines": {
