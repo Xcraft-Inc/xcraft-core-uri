@@ -1,6 +1,12 @@
 'use strict';
 
-var url = require('url');
+const path = require('path');
+const url = require('url');
+
+exports.packageDefDir = function (packageName) {
+  const xcraftConfig = require('xcraft-core-etc')().load('xcraft');
+  return path.join(xcraftConfig.pkgProductsRoot, packageName);
+};
 
 /**
  * Retrieve the real URI behind the URI extensions for zog.
@@ -21,7 +27,6 @@ var url = require('url');
 exports.realUri = function (uri, packageName) {
   var xcraftConfig = require('xcraft-core-etc')().load('xcraft');
   var chestConfig = require('xcraft-core-etc')().load('xcraft-contrib-chest');
-  var path = require('path');
 
   var urlFile = {};
   var uriObj = url.parse(uri);
